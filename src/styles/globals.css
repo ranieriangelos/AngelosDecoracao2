@@ -1,0 +1,50 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  color: var(--foreground);
+  background: var(--background);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.swiper-button-next,
+.swiper-button-prev {
+  color: #c42e30 !important; /* Define a cor da seta */
+}
+
+.swiper-pagination-bullet {
+  background-color: #c42e30 !important; /* Cor primária */
+  width: 10px;
+  height: 10px;
+  opacity: 0.5;
+}
+
+.swiper-pagination-bullet-active {
+  background-color: #ea9422 !important; /* Cor secundária quando ativo */
+  opacity: 1;
+}
+
+.seta-up{
+  z-index: 3;
+}
+
+header {
+  height: 90px; /* Defina a altura do header */
+}
+
+body {
+  padding-top: 50px; /* Garante que o conteúdo não fique escondido */
+}
