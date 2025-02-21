@@ -1,23 +1,40 @@
-export const dynamic = "force-dynamic";
-
-import { cortinas } from "../../data/cortinas";
-import { persianas } from "../../data/persianas";
-import { notFound } from "next/navigation";
-import ImageGallery from "../../../components/ImageGallery";
-import ProductCarousel from "../../../components/ProductCarousel";
-import { FaShieldAlt, FaHandsHelping, FaStar, FaCheckCircle } from "react-icons/fa";
+import { notFound } from 'next/navigation';
+import { cortinas } from '../../data/cortinas';
+import { persianas } from '../../data/persianas';
+import ImageGallery from '../../../components/ImageGallery';
+import ProductCarousel from '../../../components/ProductCarousel';
+import { FaShieldAlt, FaHandsHelping, FaStar, FaCheckCircle } from 'react-icons/fa';
+import { Metadata } from 'next';
 
 interface PageProps {
-  params: { slug: string };
+  params: {
+    slug: string | undefined;
+  } ;
+} 
+
+// Função para gerar metadados dinâmicos
+export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+  const cortina = cortinas.find((c) => c.slug === params.slug);
+  return {
+    title: cortina ? `Cortina ${cortina.nome}` : 'Cortina não encontrada',
+    description: cortina ? cortina.descricao : 'Detalhes sobre a cortina',
+  };
 }
 
-export default function CortinaDetailPage({ params }: PageProps) {
-  if (!params?.slug) return notFound();
+// Componente da página
+export default async function CortinaDetailPage({ params }: PageProps) {
+  // Extrai o slug do params
+  const { slug } = params;
 
-  const cortina = cortinas.find((c) => c.slug === params.slug);
+  // Verifica se o slug está presente
+  if (!slug) return notFound();
+
+  // Encontra a cortina com base no slug
+  const cortina = cortinas.find((c) => c.slug === slug);
   if (!cortina) return notFound();
 
-  const produtosRelacionados = [...cortinas, ...persianas].filter((p) => p.slug !== params.slug);
+  // Filtra os produtos relacionados (excluindo a cortina atual)
+  const produtosRelacionados = [...cortinas, ...persianas].filter((p) => p.slug !== slug);
 
   return (
     <div className="min-h-screen py-20">
@@ -73,7 +90,7 @@ export default function CortinaDetailPage({ params }: PageProps) {
 
             {/* Ação - Falar com Consultor */}
             <div className="mt-8">
-              <h3 className="text-1xl font-normal text-tertiary">Pronto para Transformar seu Espaço?</h3>
+              <h3 className="text-1xl font-semibold text-tertiary">Pronto para Transformar seu Espaço?</h3>
               <a
                 href={`https://wa.me/5511948365898?text=Olá, gostaria de mais informações sobre a cortina ${cortina.nome}`}
                 target="_blank"

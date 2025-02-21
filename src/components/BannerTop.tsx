@@ -1,6 +1,6 @@
 'use client';
 import { useState, useEffect } from 'react';
-import { FaTag, FaAward, FaMoneyBillWave } from 'react-icons/fa'; // Ícones para cada mensagem
+import { FaTag} from 'react-icons/fa'; // Ícones para cada mensagem
 
 export default function PromoBar() {
   const [activeIndex, setActiveIndex] = useState(0);

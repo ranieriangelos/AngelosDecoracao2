@@ -1,28 +1,40 @@
-import { persianas } from "../../data/persianas";
-import { cortinas } from "../../data/cortinas"; // Importar também as cortinas
-import ImageGallery from "../../../components/ImageGallery";
-import ProductCarousel from "../../../components/ProductCarousel";
-import { FaShieldAlt, FaHandsHelping, FaStar, FaCheckCircle } from "react-icons/fa";
+import { notFound } from 'next/navigation';
+import { persianas } from '../../data/persianas';
+import { cortinas } from '../../data/cortinas'; // Importar também as cortinas
+import ImageGallery from '../../../components/ImageGallery';
+import ProductCarousel from '../../../components/ProductCarousel';
+import { FaShieldAlt, FaHandsHelping, FaStar, FaCheckCircle } from 'react-icons/fa';
+import { Metadata } from 'next';
 
-interface Params {
-  slug: string;
+interface PageProps {
+  params: {
+    slug: string;
+  };
 }
 
-export async function generateStaticParams() {
-  return persianas.map((persiana) => ({
-    slug: persiana.slug,
-  }));
-}
-
-export default function PersianaDetailPage({ params }: { params: Params }) {
+// Função para gerar metadados dinâmicos
+export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const persiana = persianas.find((p) => p.slug === params.slug);
+  return {
+    title: persiana ? `Persiana ${persiana.nome}` : 'Persiana não encontrada',
+    description: persiana ? persiana.descricao : 'Detalhes sobre a persiana',
+  };
+}
 
-  if (!persiana) {
-    return <div>Persiana não encontrada</div>;
-  }
+// Componente da página
+export default async function PersianaDetailPage({ params }: PageProps) {
+  // Extrai o slug do params
+  const { slug } = params;
 
-  // Filtra todos os produtos (persianas + cortinas) sem incluir o atual
-  const produtosRelacionados = [...persianas, ...cortinas].filter((p) => p.slug !== params.slug);
+  // Verifica se o slug está presente
+  if (!slug) return notFound();
+
+  // Encontra a persiana com base no slug
+  const persiana = persianas.find((p) => p.slug === slug);
+  if (!persiana) return notFound();
+
+  // Filtra os produtos relacionados (excluindo a persiana atual)
+  const produtosRelacionados = [...persianas, ...cortinas].filter((p) => p.slug !== slug);
 
   return (
     <div className="min-h-screen py-20">

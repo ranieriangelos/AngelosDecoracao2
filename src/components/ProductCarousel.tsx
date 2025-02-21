@@ -1,5 +1,4 @@
 "use client";
-
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/navigation";
@@ -7,7 +6,7 @@ import "swiper/css/pagination";
 import { Navigation, Pagination } from "swiper/modules";
 import Link from "next/link";
 import { cortinas }  from "../app/data/cortinas";
-import { persianas } from "../app/data/persianas";
+import Image from "next/image"; // Importe o componente Image
 
 interface Product {
   slug: string;
@@ -45,9 +44,11 @@ export default function ProductCarousel({ produtos }: ProductCarouselProps) {
             <SwiperSlide key={produto.slug}>
               <Link href={url} className="block">
                 <div className="border p-4 hover:shadow-lg transition rounded-lg">
-                  <img
+                <Image
                     src={produto.imagens[0]}
                     alt={produto.nome}
+                    width={300} // Defina a largura desejada
+                    height={200} // Defina a altura desejada
                     className="w-full h-40 object-cover rounded-md"
                   />
                   <h3 className="text-lg font-medium mt-2">{produto.nome}</h3>

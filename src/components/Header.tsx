@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { useState } from 'react';
 import { FaWhatsapp, FaBars, FaTimes } from 'react-icons/fa';
 import PromoBar from './BannerTop';
+import Image from 'next/image';
 
 // Importando os dados de cortinas e persianas
 import { cortinas } from '../app/data/cortinas';
@@ -28,9 +29,11 @@ export default function Header() {
       <div className="container mx-auto flex justify-between items-center p-2">
         {/* Logo */}
         <Link href="/" className="text-gray-700 hover:text-primary block py-2 md:py-0" onClick={closeMenu}>
-          <img
+          <Image
             src="/images/logo-angelos-decoracao.png"
             alt="Logo Angelos Decoração"
+            width={100} // Defina a largura desejada
+            height={70} // Defina a altura desejada
             className="h-16" // Ajuste a altura conforme necessário
           />
         </Link>

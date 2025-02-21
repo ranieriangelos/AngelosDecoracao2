@@ -1,6 +1,13 @@
 import Image from 'next/image';
 
-export default function ProductCard({ product }: { product: any }) {
+interface Product {
+  id: number;
+  name: string;
+  descricao: string;
+  image: string;
+}
+
+export default function ProductCard({ product }: { product: Product }) {
   return (
     <div className="bg-white p-6 rounded-lg shadow-lg">
       <Image
@@ -11,7 +18,6 @@ export default function ProductCard({ product }: { product: any }) {
         className="rounded-lg"
       />
       <h2 className="text-xl font-bold mt-4">{product.name}</h2>
-      <p className="text-gray-700">{product.price}</p>
     </div>
   );
 }
