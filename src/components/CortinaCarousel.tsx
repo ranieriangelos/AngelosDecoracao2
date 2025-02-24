@@ -13,13 +13,13 @@ const cortinas = [
     slug: 'elegance',
     nome: 'Elegance',
     descricao: 'Transforme seu ambiente com sofisticação. Feita com tecidos premium e acabamento impecável...',
-    imagem: '/images/cortina-elegance-1.jpg',
+    imagem: '/images/cortina-Elegance-1.jpg',
   },
   {
     slug: 'motorizada',
     nome: 'Motorizada',
     descricao: 'Com a Cortina Motorizada, você controla a iluminação com um simples toque...',
-    imagem: '/images/cortina-motorizada-1.jpg',
+    imagem: '/images/cortina-Motorizada-1.jpg',
   },
   {
     slug: 'romana',

@@ -29,10 +29,10 @@ export const cortinas = [
       suas opções de cores e padrões permitem personalização para qualquer estilo de decoração. 
       Além disso, a Cortina Elegance ajuda a manter a temperatura ambiente, proporcionando conforto térmico.
     `,
-    imagemPrincipal: "/images/cortina-elegance-1.jpg",
+    imagemPrincipal: "/images/cortina-Elegance-1.jpg",
     imagens: [
-      "/images/cortina-elegance-1.jpg",
-      "/images/cortina-elegance-2.jpg",
+      "/images/cortina-Elegance-1.jpg",
+      "/images/cortina-Elegance-2.jpg",
     ],
   },
   {

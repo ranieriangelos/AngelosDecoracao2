@@ -24,10 +24,10 @@ export const persianas = [
       slug: "persiana-vertical",
       nome: "Persiana Vertical",
       descricao: "A Persiana Vertical é perfeita para cobrir janelas amplas e portas de vidro, garantindo controle de luminosidade e um visual contemporâneo.",
-      imagemPrincipal: "/images/persiana-vertical-1.jpg",
+      imagemPrincipal: "/images/persiana-Vertical-1.jpg",
       imagens: [
-        "/images/persiana-vertical-1.jpg",
-        "/images/persiana-vertical-2.jpg",
+        "/images/persiana-Vertical-1.jpg",
+        "/images/persiana-Vertical-2.jpg",
       ],
     },
     {
